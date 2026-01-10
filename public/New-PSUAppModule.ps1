@@ -55,34 +55,47 @@ function New-PSUAppModule {
     [CmdletBinding(SupportsShouldProcess)]
     param(
         [Parameter(Mandatory)]
-        [string]$DestinationPath,
+        [string]
+        $DestinationPath,
 
         [Parameter()]
-        [string]$ModuleName,
+        [String]
+        $Template = 'PowerShellUniversalApp',
 
         [Parameter()]
-        [string]$AppName,
+        [string]
+        $ModuleName,
 
         [Parameter()]
-        [string]$Description,
+        [string]
+        $AppName,
 
         [Parameter()]
-        [string]$Author,
+        [string]
+        $Description,
 
         [Parameter()]
-        [string]$Version,
+        [string]
+        $Author,
+
+        [Parameter()]
+        [string]
+        $Version,
 
         [Parameter()]
         [ValidateSet('Yes', 'No')]
-        [string]$Authentication,
+        [string]
+        $Authentication,
 
         [Parameter()]
         [ValidateSet('PowerShell 7', 'Integrated', 'Windows PowerShell')]
-        [string]$Environment,
+        [string]
+        $Environment,
 
         [Parameter()]
         [ValidateSet('Yes', 'No')]
-        [string]$IncludePages
+        [string]
+        $IncludePages
     )
 
     begin {
@@ -92,7 +105,7 @@ function New-PSUAppModule {
         }
 
         # Get the template path (assumes it's in the module directory)
-        $TemplatePath = Join-Path (Split-Path -Parent $PSScriptRoot) 'Template'
+        $TemplatePath = Join-Path (Split-Path -Parent $PSScriptRoot) 'Templates' $Template
         
         if (-not (Test-Path (Join-Path $TemplatePath 'plasterManifest.xml'))) {
             throw "Plaster manifest not found at: $TemplatePath"
