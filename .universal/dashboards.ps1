@@ -8,7 +8,7 @@ $app = @{
     Command     = 'New-UD<%=$PLASTER_PARAM_AppName%>App'
     AutoDeploy  = $true
     Description = '<%=$PLASTER_PARAM_Description%>'
-    Environment = 'PowerShell 7'
+    Environment = '<%=$PLASTER_PARAM_Environment%>'
 <%
 if ($PLASTER_PARAM_Authentication -eq 'Yes') {
 @'

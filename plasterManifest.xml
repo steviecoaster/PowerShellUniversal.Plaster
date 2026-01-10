@@ -22,6 +22,11 @@
       <choice label='&amp;Yes' help='App requires authentication' value='Yes'/>
       <choice label='&amp;No' help='App does not require authentication' value='No'/>
     </parameter>
+    <parameter name='Environment' type='choice' prompt='What environment should the app use?' default='0' store='text'>
+      <choice label='&amp;PowerShell 7' help='Use PowerShell 7 environment' value='PowerShell 7'/>
+      <choice label='&amp;Integrated' help='Use Integrated environment' value='Integrated'/>
+      <choice label='&amp;Windows PowerShell' help='Use Windows PowerShell 5.1 environment' value='Windows PowerShell'/>
+    </parameter>
     <parameter name='IncludePages' type='choice' prompt='Include sample pages?' default='0' store='text'>
       <choice label='&amp;Yes' help='Include sample page templates' value='Yes'/>
       <choice label='&amp;No' help='Start with empty pages folder' value='No'/>
