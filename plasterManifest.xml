@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<plasterManifest
+  schemaVersion="1.2"
+  templateType="Project"
+  xmlns="http://www.microsoft.com/schemas/PowerShell/Plaster/v1">
+  <metadata>
+    <name>PowerShellUniversalApp</name>
+    <id>48be88f8-f1c3-4cf6-92f4-fe5bc4ada4a0</id>
+    <version>1.0.0</version>
+    <title>PowerShell Universal App Module</title>
+    <description>A PowerShell Universal App project template with module structure</description>
+    <author>Your Name</author>
+    <tags>PowerShellUniversal</tags>
+  </metadata>
+  <parameters>
+    <parameter name='ModuleName' type='text' prompt='Enter the name for this app module (e.g., PowerShellUniversal.Apps.MyApp)' default='PowerShellUniversal.Apps.Sample'/>
+    <parameter name='AppName' type='text' prompt='Enter the friendly app name (e.g., MyApp)' default='Sample'/>
+    <parameter name='Description' type='text' prompt='Enter a brief description for this app' default='A PowerShell Universal Dashboard Application'/>
+    <parameter name='Author' type='user-fullname' prompt='Enter the author name' default='${PLASTER_PARAM_Author}'/>
+    <parameter name='Version' type='text' prompt='Enter the version number' default='1.0.0'/>
+    <parameter name='Authentication' type='choice' prompt='Does app require authentication?' default='0' store='text'>
+      <choice label='&amp;Yes' help='App requires authentication' value='Yes'/>
+      <choice label='&amp;No' help='App does not require authentication' value='No'/>
+    </parameter>
+    <parameter name='IncludePages' type='choice' prompt='Include sample pages?' default='0' store='text'>
+      <choice label='&amp;Yes' help='Include sample page templates' value='Yes'/>
+      <choice label='&amp;No' help='Start with empty pages folder' value='No'/>
+    </parameter>
+  </parameters>
+  <content>
+    <!-- Create module manifest -->
+    <templateFile source='template.psd1' destination='${PLASTER_PARAM_ModuleName}\${PLASTER_PARAM_ModuleName}.psd1'/>
+    
+    <!-- Create module script -->
+    <templateFile source='template.psm1' destination='${PLASTER_PARAM_ModuleName}\${PLASTER_PARAM_ModuleName}.psm1'/>
+    
+    <!-- Create .universal folder with dashboards.ps1 -->
+    <templateFile source='.universal\dashboards.ps1' destination='${PLASTER_PARAM_ModuleName}\.universal\dashboards.ps1'/>
+    
+    <!-- Create App.ps1 dashboard file -->
+    <templateFile source='dashboards\App.ps1' destination='${PLASTER_PARAM_ModuleName}\dashboards\App.ps1'/>
+    
+    <!-- Create homepage conditionally -->
+    <templateFile condition='$PLASTER_PARAM_IncludePages -eq "Yes"' source='dashboards\pages\homepage.ps1' destination='${PLASTER_PARAM_ModuleName}\dashboards\pages\homepage.ps1'/>
+    
+    <!-- Create the New-UDApp command function -->
+    <templateFile source='public\New-UDApp.ps1' destination='${PLASTER_PARAM_ModuleName}\public\New-UD${PLASTER_PARAM_AppName}App.ps1'/>
+    
+    <!-- Create empty directories -->
+    <file source='' destination='${PLASTER_PARAM_ModuleName}\private\.gitkeep'/>
+    
+    <!-- Create README -->
+    <templateFile source='README.md' destination='${PLASTER_PARAM_ModuleName}\README.md'/>
+    
+    <!-- Display completion message -->
+    <message>
+Your PowerShell Universal App module '${PLASTER_PARAM_ModuleName}' has been created successfully!
+
+Next steps:
+1. Import the module: Import-Module .\${PLASTER_PARAM_ModuleName}\${PLASTER_PARAM_ModuleName}.psd1
+2. Edit the dashboard: .\${PLASTER_PARAM_ModuleName}\dashboards\App.ps1
+3. Add your custom functions to the public or private folders
+4. Register the app in PowerShell Universal
+
+    </message>
+  </content>
+</plasterManifest>
