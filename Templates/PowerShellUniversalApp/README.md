@@ -69,16 +69,14 @@ PowerShellUniversal.Apps.YourApp/
     └── New-UDYourAppApp.ps1                 # App creation command
 ```
 
-## Features
+## Module Development
 
-- **Module Manifest**: Pre-configured with PowerShell Universal metadata
-- **Module Script**: Automatic function loading from public/private folders
-- **App Registration**: `.universal/dashboards.ps1` for automatic PowerShell Universal detection
-- **App Command**: `New-UDYourAppApp` function that creates and returns the dashboard
-- **Dashboard Structure**: Organized page-based dashboard architecture
-- **Authentication Support**: Optional authentication configuration
-- **README**: Auto-generated documentation
-- **Function Organization**: Separate folders for public and private functions
+Once you have created the base structure from your template you need only do the following:
+
+1. Add public functions to the public folder in their respecitive .ps1 file(s). 
+2. Add private functions to the private folder in their respective .ps1 file(s).
+3. For public functions, ensure they are adding to the `FunctionsToExport` array inside your `.psd1` file
+4. Add any additional pages to the `pages` folder. Added pages will automatically be picked up by the dashboard upon update.
 
 ## Customizing the Template
 

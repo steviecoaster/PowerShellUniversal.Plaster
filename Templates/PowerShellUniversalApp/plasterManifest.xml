@@ -13,8 +13,8 @@
     <tags>PowerShellUniversal</tags>
   </metadata>
   <parameters>
-    <parameter name='ModuleName' type='text' prompt='Enter the name for this app module (e.g., PowerShellUniversal.Apps.MyApp)' default='PowerShellUniversal.Apps.Sample'/>
-    <parameter name='AppName' type='text' prompt='Enter the friendly app name (e.g., MyApp)' default='Sample'/>
+    <parameter name='ModuleName' type='text' prompt='Enter the name for this app module (e.g., PowerShellUniversal.Apps.MyApp)'/>
+    <parameter name='AppName' type='text' prompt='Enter the friendly app name (e.g., MyApp)'/>
     <parameter name='Description' type='text' prompt='Enter a brief description for this app' default='A PowerShell Universal Dashboard Application'/>
     <parameter name='Author' type='user-fullname' prompt='Enter the author name' default='${PLASTER_PARAM_Author}'/>
     <parameter name='Version' type='text' prompt='Enter the version number' default='1.0.0'/>
