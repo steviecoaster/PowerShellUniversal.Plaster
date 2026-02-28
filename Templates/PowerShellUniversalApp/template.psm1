@@ -14,6 +14,3 @@ foreach ($import in @($Public + $Private)) {
         Write-Error -Message "Failed to import function $($import.FullName): $_"
     }
 }
-
-# Export public functions
-Export-ModuleMember -Function $Public.BaseName
