@@ -24,7 +24,7 @@
     PowerShellVersion = '5.1'
 
     # Functions to export from this module
-    FunctionsToExport = @('New-UD<%=$PLASTER_PARAM_AppName%>App.ps1')
+    FunctionsToExport = @('New-UD<%=$PLASTER_PARAM_AppName%>App')
 
     # Cmdlets to export from this module
     CmdletsToExport   = @()
@@ -54,3 +54,4 @@
             # ReleaseNotes = ''
         }
     }
+}
