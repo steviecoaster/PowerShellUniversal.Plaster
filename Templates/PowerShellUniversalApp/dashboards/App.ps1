@@ -25,4 +25,4 @@ if ($PLASTER_PARAM_Authentication -eq 'Yes') {
 }
 
 # Create and return the dashboard
-New-UDDashboard @DashboardConfig
+New-UDDApp @DashboardConfig
